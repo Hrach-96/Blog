@@ -20,6 +20,11 @@ Route::group(['namespace' => 'User'], function () {
 /*
 	Start Admin Part
 */
-Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
-    Route::get('/OUi2WZVgIzsSNwjGuilKkXb1TI5L','AdminController@login')->name('admin.dashboard');
+Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['NotLogged']], function () {
+    Route::get('/OUi2WZVgIzsSNwjGuilKkXb1TI5L','AdminController@login')->name('admin.login');
+    Route::post('LoginAdmin','AdminController@LoginAdmin')->name('login.admin');
+});
+Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['IsLogin']], function () {
+    Route::get('homepage','AdminController@Homepage')->name('admin.homepage');
+    Route::get('logout','AdminController@logout')->name('admin.logout');
 });
