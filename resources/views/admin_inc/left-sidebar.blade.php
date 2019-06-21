@@ -12,8 +12,8 @@
                     <li class="active">
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Products</span></a>
                         <ul class="collapse">
-                            <li class="active"><a href="index2.html">All Products</a></li>
-                            <li ><a href="index.html">Add Product</a></li>
+                            <li {{(Route::current()->getName() == "admin.homepage") ? "class=active" : ""}} ><a href="{{route('admin.homepage')}}">All Products</a></li>
+                            <li {{(Route::current()->getName() == "admin.AddProduct") ? "class=active" : ""}}  ><a href="{{route('admin.AddProduct')}}">Add Product</a></li>
                         </ul>
                     </li>
                 </ul>

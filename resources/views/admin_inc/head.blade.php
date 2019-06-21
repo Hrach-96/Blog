@@ -18,3 +18,11 @@
 <link rel="stylesheet" href="{{asset('admin/dashboard/assets/css/responsive.css')}}">
 <!-- modernizr css -->
 <script src="{{asset('admin/dashboard/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.0/css/scroller.bootstrap4.min.css">
+
+@jquery
+<!-- toastr library -->
+@toastr_css

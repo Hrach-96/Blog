@@ -29,3 +29,13 @@
 <!-- others plugins -->
 <script src="{{asset('admin/dashboard/assets/js/plugins.js')}}"></script>
 <script src="{{asset('admin/dashboard/assets/js/scripts.js')}}"></script>
+<!-- datatable -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/scroller/2.0.0/js/dataTables.scroller.min.js"></script>
+<script src="{{asset('admin/js/custom.js')}}"></script>
+
+<!-- toastr library -->
+@toastr_js
+@toastr_render

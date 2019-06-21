@@ -26,5 +26,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['NotLo
 });
 Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['IsLogin']], function () {
     Route::get('homepage','AdminController@Homepage')->name('admin.homepage');
+    Route::get('AddProduct','AdminController@AddProduct')->name('admin.AddProduct');
     Route::get('logout','AdminController@logout')->name('admin.logout');
+    Route::post('NewProduct','AdminController@NewProduct')->name('admin.NewProduct');
 });

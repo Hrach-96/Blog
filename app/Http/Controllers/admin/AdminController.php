@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\ProductImageGallery;
+use App\Product;
 use Validator;
 use Redirect;
 use App\User;
@@ -46,6 +48,48 @@ class AdminController extends Controller
         Session::forget('userData');
         return Redirect('/admin/OUi2WZVgIzsSNwjGuilKkXb1TI5L');
     }
+    //Add Product
+    public function AddProduct()
+    {
+        return view('admin.product.AddProduct');
+    }
+    //Nwq Product
+    public function NewProduct(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'description' => 'required',
+        ]);
+        if ($validator->fails())
+        {
+            toastr()->error('Something is wrong!');
+            return Redirect::back()
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput();
+        }else{
+            $product = new Product();
+            $product->name = request('name');
+            $product->price = request('price');
+            $product->description = request('description');
+            if(request('main_image')){
+                $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
+            }
+            if($product->save()){
+                if(request('images_for_gallery')){
+                    foreach (request('images_for_gallery') as $image_for_gallery){
+                        $ProductImageGallery = new ProductImageGallery();
+                        $ProductImageGallery->product_id = $product->id;
+                        $ProductImageGallery->image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                        $ProductImageGallery->save();
+                    }
+                }
+                toastr()->Success('Done');
+                return Redirect(route('admin.AddProduct'));
+            }
+        }
+        return view('admin.product.AddProduct');
+    }
 //    Check Admin
     public function checkLogin($email,$password){
         $user = User::where(['email' => $email])->first();
@@ -62,6 +106,7 @@ class AdminController extends Controller
     }
 //    Admin Homepage
     public function Homepage(){
-        return view('admin.admin.homepage');
+        $AllProduct = Product::all();
+        return view('admin.admin.homepage',compact(['AllProduct']));
     }
 }
