@@ -35,7 +35,7 @@
 
                                  data-elementdelay="0.05"
 
-                                 style="z-index: 5; white-space: nowrap;">SEASON SALE</div>
+                                 style="z-index: 5; white-space: nowrap;font-size:36px">Деловая Логистика</div>
 
                             <!-- LAYER NR. 2 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
@@ -57,7 +57,7 @@
                                  data-responsive_offset="on"
 
 
-                                 style="z-index: 6; white-space: nowrap;">Superb ecommerce store is updated regularly with offers.</div>
+                                 style="z-index: 6; white-space: nowrap;text-align:center;margin-top:80px;">Это – площадка,<br>  на  которой объединены предложения производителей и продавцов <br> лабораторного оборудования для испытания строительных<br> материалов и конструкций</div>
 
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-Icon   tp-resizeme rs-parallaxlevel-0"
@@ -109,9 +109,9 @@
                         <!-- SLIDE  -->
 
                         <!-- SLIDE  -->
-                        <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/slide-img2.jpg')}}"  data-rotate="0"  data-saveperformance="off"  data-title="Ken Burns" data-description="">
+                        <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/background_slide2.png')}}"  data-rotate="0"  data-saveperformance="off"  data-title="Ken Burns" data-description="">
                             <!-- MAIN IMAGE -->
-                            <img src="{{asset('user/home/images/slide-img2.jpg')}}"  alt="">
+                            <img src="{{asset('user/home/images/background_slide2.png')}}"  alt="">
                             <!-- LAYERS -->
 
                             <!-- LAYER NR. 1 -->
@@ -132,7 +132,7 @@
                                  data-responsive_offset="on"
 
 
-                                 style="z-index: 5;background-color:rgba(0, 0, 0, 0.75);border-color:rgba(0, 0, 0, 0.50);"> </div>
+                                 style="z-index: 5;border-color:rgba(0, 0, 0, 0.50);"> </div>
 
                             <!-- LAYER NR. 2 -->
                             <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
@@ -156,7 +156,7 @@
 
                                  data-elementdelay="0.05"
 
-                                 style="z-index: 6; white-space: nowrap;">Mega Sale </div>
+                                 style="z-index: 6; white-space: nowrap;font-size:36px">Профессиональная установка</div>
 
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
@@ -178,118 +178,118 @@
                                  data-responsive_offset="on"
 
 
-                                 style="z-index: 7; white-space: nowrap;">Lorem ipsum dolor sit amet, consectetur </div>
+                                 style="z-index: 7; white-space: nowrap;text-align:center"> Залог вашего спокойствия и основа эффективной <br> эксплуатации с самого первого дня.</div>
                         </li>
                         <!-- SLIDE  -->
-                        <li data-index="rs-19" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/video-img.jpg')}}"  data-rotate="0"  data-saveperformance="off"  data-title="HTML5 Video" data-description="">
-                            <!-- MAIN IMAGE -->
-                            <img src="{{asset('user/home/images/video-img.jpg')}}"  alt="">
-                            <!-- LAYERS -->
+                        {{--<li data-index="rs-19" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/video-img.jpg')}}"  data-rotate="0"  data-saveperformance="off"  data-title="HTML5 Video" data-description="">--}}
+                            {{--<!-- MAIN IMAGE -->--}}
+                            {{--<img src="{{asset('user/home/images/video-img.jpg')}}"  alt="">--}}
+                            {{--<!-- LAYERS -->--}}
 
-                            <!-- BACKGROUND VIDEO LAYER -->
-                            <div class="rs-background-video-layer"
-                                 data-forcerewind="on"
-                                 data-volume="mute"
-                                 data-videowidth="100%"
-                                 data-videoheight="100%"
-                                 data-videomp4="{{asset('user/home/images/bg1.mp4')}}"
-                                 data-videowebm="{{asset('user/home/images/bg1.webm')}}"
-                                 data-videopreload="preload"
-                                 data-videoloop="none"
-                                 data-forceCover="1"
-                                 data-aspectratio="16:9"
-                                 data-autoplay="true"
-                                 data-autoplayonlyfirsttime="false"
-                                 data-nextslideatend="true"
-                            ></div>
+                            {{--<!-- BACKGROUND VIDEO LAYER -->--}}
+                            {{--<div class="rs-background-video-layer"--}}
+                                 {{--data-forcerewind="on"--}}
+                                 {{--data-volume="mute"--}}
+                                 {{--data-videowidth="100%"--}}
+                                 {{--data-videoheight="100%"--}}
+                                 {{--data-videomp4="{{asset('user/home/images/bg1.mp4')}}"--}}
+                                 {{--data-videowebm="{{asset('user/home/images/bg1.webm')}}"--}}
+                                 {{--data-videopreload="preload"--}}
+                                 {{--data-videoloop="none"--}}
+                                 {{--data-forceCover="1"--}}
+                                 {{--data-aspectratio="16:9"--}}
+                                 {{--data-autoplay="true"--}}
+                                 {{--data-autoplayonlyfirsttime="false"--}}
+                                 {{--data-nextslideatend="true"--}}
+                            {{--></div>--}}
 
-                            <!-- LAYER NR. 1 -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0"
-                                 id="slide-19-layer-10"
-                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-                                 data-width="full"
-                                 data-height="full"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
+                            {{--<!-- LAYER NR. 1 -->--}}
+                            {{--<div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0"--}}
+                                 {{--id="slide-19-layer-10"--}}
+                                 {{--data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"--}}
+                                 {{--data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"--}}
+                                 {{--data-width="full"--}}
+                                 {{--data-height="full"--}}
+                                 {{--data-whitespace="nowrap"--}}
+                                 {{--data-transform_idle="o:1;"--}}
 
-                                 data-transform_in="opacity:0;s:2000;e:Power3.easeInOut;"
-                                 data-transform_out="opacity:0;s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-start="2000"
-                                 data-basealign="slide"
-                                 data-responsive_offset="on"
-                                 data-responsive="off"
+                                 {{--data-transform_in="opacity:0;s:2000;e:Power3.easeInOut;"--}}
+                                 {{--data-transform_out="opacity:0;s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"--}}
+                                 {{--data-start="2000"--}}
+                                 {{--data-basealign="slide"--}}
+                                 {{--data-responsive_offset="on"--}}
+                                 {{--data-responsive="off"--}}
 
-                                 style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0);"> </div>
+                                 {{--style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0);"> </div>--}}
 
-                            <!-- LAYER NR. 2 -->
-                            <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
-                                 id="slide-19-layer-1"
-                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-                                 data-lineheight="['70','70','70','50']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
+                            {{--<!-- LAYER NR. 2 -->--}}
+                            {{--<div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"--}}
+                                 {{--id="slide-19-layer-1"--}}
+                                 {{--data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"--}}
+                                 {{--data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"--}}
+                                 {{--data-lineheight="['70','70','70','50']"--}}
+                                 {{--data-width="none"--}}
+                                 {{--data-height="none"--}}
+                                 {{--data-whitespace="nowrap"--}}
+                                 {{--data-transform_idle="o:1;"--}}
 
-                                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                                 data-start="1000"
-                                 data-splitin="chars"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
+                                 {{--data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"--}}
+                                 {{--data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"--}}
+                                 {{--data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"--}}
+                                 {{--data-start="1000"--}}
+                                 {{--data-splitin="chars"--}}
+                                 {{--data-splitout="none"--}}
+                                 {{--data-responsive_offset="on"--}}
 
-                                 data-elementdelay="0.05"
+                                 {{--data-elementdelay="0.05"--}}
 
-                                 style="z-index: 6; white-space: nowrap;">Hot deals</div>
+                                 {{--style="z-index: 6; white-space: nowrap;">Hot deals</div>--}}
 
-                            <!-- LAYER NR. 3 -->
-                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
-                                 id="slide-19-layer-4"
-                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                 data-y="['middle','middle','middle','middle']" data-voffset="['52','52','52','51']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
+                            {{--<!-- LAYER NR. 3 -->--}}
+                            {{--<div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"--}}
+                                 {{--id="slide-19-layer-4"--}}
+                                 {{--data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"--}}
+                                 {{--data-y="['middle','middle','middle','middle']" data-voffset="['52','52','52','51']"--}}
+                                 {{--data-width="none"--}}
+                                 {{--data-height="none"--}}
+                                 {{--data-whitespace="nowrap"--}}
+                                 {{--data-transform_idle="o:1;"--}}
 
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                                 data-start="1500"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-
-
-                                 style="z-index: 7; white-space: nowrap;">Lorem ipsum dolor sit amet, consectetur </div>
-
-                            <!-- LAYER NR. 4 -->
-                            <div class="tp-caption NotGeneric-Icon   tp-resizeme rs-parallaxlevel-0"
-                                 id="slide-19-layer-8"
-                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                 data-y="['middle','middle','middle','middle']" data-voffset="['-68','-68','-68','-68']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
-                                 data-style_hover="cursor:default;"
-
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                                 data-start="2000"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
+                                 {{--data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"--}}
+                                 {{--data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"--}}
+                                 {{--data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"--}}
+                                 {{--data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"--}}
+                                 {{--data-start="1500"--}}
+                                 {{--data-splitin="none"--}}
+                                 {{--data-splitout="none"--}}
+                                 {{--data-responsive_offset="on"--}}
 
 
-                                 style="z-index: 8; white-space: nowrap;"><i class="pe-7s-ball"></i> </div>
-                        </li>
+                                 {{--style="z-index: 7; white-space: nowrap;">Lorem ipsum dolor sit amet, consectetur </div>--}}
+
+                            {{--<!-- LAYER NR. 4 -->--}}
+                            {{--<div class="tp-caption NotGeneric-Icon   tp-resizeme rs-parallaxlevel-0"--}}
+                                 {{--id="slide-19-layer-8"--}}
+                                 {{--data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"--}}
+                                 {{--data-y="['middle','middle','middle','middle']" data-voffset="['-68','-68','-68','-68']"--}}
+                                 {{--data-width="none"--}}
+                                 {{--data-height="none"--}}
+                                 {{--data-whitespace="nowrap"--}}
+                                 {{--data-transform_idle="o:1;"--}}
+                                 {{--data-style_hover="cursor:default;"--}}
+
+                                 {{--data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"--}}
+                                 {{--data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"--}}
+                                 {{--data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"--}}
+                                 {{--data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"--}}
+                                 {{--data-start="2000"--}}
+                                 {{--data-splitin="none"--}}
+                                 {{--data-splitout="none"--}}
+                                 {{--data-responsive_offset="on"--}}
+
+
+                                 {{--style="z-index: 8; white-space: nowrap;"><i class="pe-7s-ball"></i> </div>--}}
+                        {{--</li>--}}
                         <!-- SLIDE  -->
 
                     </ul>
@@ -316,7 +316,7 @@
     <section class="featured-pro container wow bounceInUp animated">
         <div class="slider-items-products container">
             <div class="new_title center">
-                <h2>New Products</h2>
+                <h2>Новые товары</h2>
                 <div class="starSeparator"></div>
             </div>
             <div id="featured-slider" class="product-flexslider hidden-buttons">
@@ -369,14 +369,14 @@
     <!-- End Featured Slider -->
 
     <!--Promotion Banner-->
-    <div class="offer-slider parallax parallax-2">
+    <div class="offer-slider  middle_images_for_flex_armatura">
         <div class="container">
-            <h2> Deals of the day</h2>
-            <div class="starSeparator"></div>
-            <div class="box-timer">
-                <div class="countbox_1 timer-grid"></div>
-            </div>
-            <a href="#" class="shop-now">Shop Now</a>
+            {{--<h2> Deals of the day</h2>--}}
+            {{--<div class="starSeparator"></div>--}}
+            {{--<div class="box-timer">--}}
+                {{--<div class="countbox_1 timer-grid"></div>--}}
+            {{--</div>--}}
+            {{--<a href="#" class="shop-now">Shop Now</a>--}}
         </div>
     </div>
     <!--Promotion Banner End-->
@@ -394,8 +394,8 @@
                                         <!--Begin Tab Nav -->
                                         <div class="thm-pdt-nav">
                                             <ul class="pdt-nav">
-                                                <li class="item-nav" data-type="order" data-catid="" data-orderby="best_sales" data-href="last_products"><span class="title-navi">Last Products</span></li>
-                                                <li class="item-nav tab-loaded tab-nav-actived" data-type="order" data-catid="" data-orderby="all_products" data-href="all_products"><span class="title-navi">All Products</span></li>
+                                                <li class="item-nav" data-type="order" data-catid="" data-orderby="best_sales" data-href="last_products"><span class="title-navi">Последние товары</span></li>
+                                                <li class="item-nav tab-loaded tab-nav-actived" data-type="order" data-catid="" data-orderby="all_products" data-href="all_products"><span class="title-navi">Все товары</span></li>
                                             </ul>
                                         </div>
                                         <!-- End Tab Nav -->
@@ -517,69 +517,11 @@
         </div>
     </div>
 
-
-
-    <!-- Latest Blog -->
-    <section class="latest-blog wow bounceInUp animated">
+    <div class="middle_images_for_flex_asfalt">
         <div class="container">
-            <div class="new_title center">
-                <h1>Latest Blog</h1>
-                <div class="starSeparator"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                    <div class="blog_post">
-                        <div class="thumbnail">
-                            <h2> <a href="#">Lorem ipsum dolor sit amet, consect adipiscing elit</a> </h2>
-                            <div class="featured-img">
-                                <span class="gradient-overlay"></span>
-                                <img src="{{asset('user/home/images/blog-img1.jpg')}}" alt="blog post">
 
-                            </div>
-
-                        </div>
-                        <div class="entry-meta">
-                            <a href="#">
-                                <span class="author-avatar byline"><img alt="" src="{{asset('user/home/images/admin-photo.jpg')}}" class="avatar avatar-96 photo">By John Doe</span> <span class="timestamp">January 26, 2016</span>
-                            </a>
-
-
-
-                        </div>
-                        <p> Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien.</p>
-                        <p> Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend... </p>
-                        <a href="#" class="continue-btn">Continue Reading <span>›</span></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                    <div class="blog_post">
-                        <div class="thumbnail">
-                            <h2> <a href="#"> Pellentesque aliquet, sem eget laoreet ultrices</a> </h2>
-                            <div class="featured-img">
-                                <span class="gradient-overlay"></span>
-                                <img src="{{asset('user/home/images/blog-img2.jpg')}}"  alt="blog post 2">
-
-                            </div>
-
-                        </div>
-                        <div class="entry-meta">
-                            <a href="#">
-                                <span class="author-avatar byline"><img alt="" src="{{asset('user/home/images/admin-photo1.jpg')}}"  class="avatar avatar-96 photo">By Saraha Smith</span>
-                            </a>
-                            <span class="timestamp">January 20, 2016</span>
-
-
-                        </div>
-                        <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales.</p>
-                        <p> Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis... </p>
-                        <a href="#" class="continue-btn">Continue Reading <span>›</span></a>
-                    </div>
-                </div>
-
-            </div>
         </div>
-    </section>
-    <!-- End Latest Blog -->
+    </div>
 
     <div class="brand-logo wow bounceInUp animated">
         <div class="container">
@@ -622,36 +564,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-
-    <div class="our-features-box">
-        <div class="container">
-            <ul>
-                <li>
-                    <div class="feature-box red_bg"> <span class="icon-globe-alt"></span>
-                        <div class="content">
-                            <h3>FREE SHIPPING WORLDWIDE</h3>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="feature-box yellow_bg"> <span class="icon-support"></span>
-                        <div class="content">
-                            <h3>24/7 CUSTOMER SUPPORT</h3>
-                        </div>
-                    </div>
-                </li>
-                <li class="last">
-                    <div class="feature-box brown_bg"> <span class="icon-share-alt"></span>
-                        <div class="content">
-                            <h3>RETURNS AND EXCHANGES</h3>
-                        </div>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
 @endsection

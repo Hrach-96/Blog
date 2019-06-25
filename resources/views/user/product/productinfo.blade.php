@@ -49,25 +49,27 @@
                                             <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> <span>&#8381;</span> {{$productInfo->price}}</span> </p>
                                             {{--<p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>--}}
                                         </div>
-                                        <p class="availability in-stock pull-right"><span>In Stock</span></p>
+                                        <p class="availability in-stock pull-right"><span>В наличии</span></p>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="product-collateral col-lg-12 col-sm-12 col-xs-12 bounceInUp animated">
-                            <div class="add_info">
-                                <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
-                                    <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Description </a> </li>
-                                </ul>
-                                <div id="productTabContent" class="tab-content">
-                                    <div class="tab-pane fade in active" id="product_tabs_description">
-                                        <div class="std">
-                                            <p>{{$productInfo->description}}</p>
+                        @if($productInfo->description)
+                            <div class="product-collateral col-lg-12 col-sm-12 col-xs-12 bounceInUp animated">
+                                <div class="add_info">
+                                    <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                                        <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Description </a> </li>
+                                    </ul>
+                                    <div id="productTabContent" class="tab-content">
+                                        <div class="tab-pane fade in active" id="product_tabs_description">
+                                            <div class="std">
+                                                <p>{{$productInfo->description}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -80,11 +82,11 @@
         <div class="container">
             <div class="slider-items-products">
                 <div class="new_title center">
-                    <h2>Other Products</h2>
+                    <h2>ДРУГИЕ ПРОДУКТЫ</h2>
                 </div>
                 <div id="related-products-slider" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
-                        @foreach( $randomprod = App\Product::all()->random(8) as $product)
+                        @foreach( $randomprod = App\Product::all()->random(6) as $product)
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">

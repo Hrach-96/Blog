@@ -7,3 +7,19 @@
 .class_for_height_width_155px{
     max-height:155px;
 }
+.middle_images_for_flex_armatura{
+    background-image: url(../home/images/parralax-bg2.jpg);
+    padding-top: 55px;
+    padding-bottom: 55px;
+    background-position: center;
+    background-attachment: fixed;
+    height:435px;
+}
+.middle_images_for_flex_asfalt{
+    background-image: url(../home/images/parralax-bg3.jpg);
+    padding-top: 55px;
+    padding-bottom: 55px;
+    background-position: center;
+    background-attachment: fixed;
+    height:435px;
+}

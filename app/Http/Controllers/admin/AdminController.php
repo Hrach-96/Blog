@@ -59,7 +59,6 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'price' => 'required|numeric',
-            'description' => 'required',
         ]);
         if ($validator->fails())
         {
@@ -71,7 +70,9 @@ class AdminController extends Controller
             $product = new Product();
             $product->name = request('name');
             $product->price = request('price');
-            $product->description = request('description');
+            if(request('description')){
+                $product->description = request('description');
+            }
             if(request('main_image')){
                 $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
             }
