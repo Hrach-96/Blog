@@ -10,6 +10,7 @@ use Validator;
 use Redirect;
 use App\User;
 use Session;
+use Crypt;
 use Hash;
 
 class AdminController extends Controller
@@ -91,6 +92,77 @@ class AdminController extends Controller
         }
         return view('admin.product.AddProduct');
     }
+
+
+    // edit product
+    public function EditProduct($id){
+        if($product = Product::find($id)){
+            return view('admin.product.EditProduct',compact('product'));
+        }
+        toastr()->error('Something is wrong!');
+        return Redirect::back();
+    }
+
+    // update product
+    public function UpdateProduct(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
+
+        $id = Crypt::decrypt(request('id'));
+
+
+        if ($validator->fails() || !Product::find($id))
+        {
+            toastr()->error('Something is wrong!');
+            return Redirect::back()
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput();
+        }else{
+
+
+
+            $product = Product::find($id);
+            $product->name = request('name');
+            $product->price = request('price');
+            if(request('description')){
+                $product->description = request('description');
+            }
+            if(request('main_image')){
+//                dd('images/main_images'.$product->main_image);
+                unlink('images/main_images/'.$product->main_image);
+                $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
+            }
+            if($product->save()){
+                if(request('images_for_gallery')){
+                    foreach (request('images_for_gallery') as $image_for_gallery){
+                        $ProductImageGallery = new ProductImageGallery();
+                        $ProductImageGallery->product_id = $product->id;
+                        $ProductImageGallery->image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                        $ProductImageGallery->save();
+                    }
+                }
+                toastr()->Success('Done');
+                return Redirect(route('admin.homepage'));
+            }else{
+                toastr()->error('Something is wrong!');
+            }
+        }
+        return Redirect('/admin/homepage');
+    }
+
+
+    public function DeleteProduct($id){
+        if ($product = Product::find($id)){
+            $product->delete();
+            toastr()->Success('Done');
+        }else{
+            toastr()->error('Something is wrong!');
+        }
+        return Redirect('/admin/homepage');    }
+
 //    Check Admin
     public function checkLogin($email,$password){
         $user = User::where(['email' => $email])->first();

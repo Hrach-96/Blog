@@ -3,4 +3,8 @@ $(document).ready(function(){
         responsive: true,
         scrollX:true,
     });
+
+    $('.main_images').click(function () {
+        $('#main_image').trigger( "click" );
+    })
 })

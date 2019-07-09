@@ -1,0 +1,8 @@
+.main_images{
+    cursor: pointer;
+    object-fit: contain;
+    width: 100%;
+}
+.hidden{
+    opacity: 0;
+}

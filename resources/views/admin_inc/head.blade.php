@@ -23,6 +23,8 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.0/css/scroller.bootstrap4.min.css">
 
+<link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
+
 @jquery
 <!-- toastr library -->
 @toastr_css
