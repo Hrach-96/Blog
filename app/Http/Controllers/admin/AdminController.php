@@ -178,6 +178,26 @@ class AdminController extends Controller
         return response(['success' => false]);
     }
 
+    // add gallery image
+    public function GalleryAdd(Request $request){
+        if ( $id = Crypt::decrypt(request('id'))) {
+            $new_images = [];
+            $new_images_id = [];
+            foreach (request('images_for_gallery') as $image_for_gallery) {
+                $ProductImageGallery = new ProductImageGallery();
+                $ProductImageGallery->product_id = $id;
+                $new_image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                $ProductImageGallery->image = $new_image;
+                $ProductImageGallery->save();
+
+                $new_images_id[] = Crypt::encrypt($ProductImageGallery->id);
+                $new_images[] = $new_image;
+            }
+                return response(['success' => true,'images' => $new_images,'ids' => $new_images_id]);
+        }
+        return response(['success' => false]);
+    }
+
     // delete Gallery image
     public function GalleryRemove(Request $request){
         if ( $id = Crypt::decrypt(request('id'))){

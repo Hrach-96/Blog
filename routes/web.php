@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['IsLog
     Route::get('DeleteProduct/{id}','AdminController@DeleteProduct')->name('admin.DeleteProduct');
     Route::post('GalleryRemove','AdminController@GalleryRemove')->name('admin.GalleryRemove');
     Route::post('GalleryUpdate','AdminController@GalleryUpdate')->name('admin.GalleryUpdate');
+    Route::post('GalleryAdd','AdminController@GalleryAdd')->name('admin.GalleryAdd');
     Route::post('NewProduct','AdminController@NewProduct')->name('admin.NewProduct');
     Route::post('UpdateProduct','AdminController@UpdateProduct')->name('admin.UpdateProduct');
 });

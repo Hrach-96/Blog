@@ -92,6 +92,10 @@
 									</div>
 								</div>
 							@endforeach
+							<div class="col-md-3 d-flex align-items-center justify-content-center GalleryAdd">
+								<i class="fa fa-plus fa-5x text-info cursor_pointer" aria-hidden="true"></i>
+							</div>
+								<input type="file" multiple  id="product_gallery_add" class="hidden">
 						</div>
 					</div>
 					@endif

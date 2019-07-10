@@ -14,3 +14,12 @@
 .cursor_pointer{
     cursor: pointer;
 }
+.GalleryAdd{
+    min-height: 140px;
+}
+.GalleryAdd i{
+    transition: 1s;
+}
+.GalleryAdd:hover i{
+    color: lime !important;
+}

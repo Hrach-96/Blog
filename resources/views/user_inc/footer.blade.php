@@ -268,6 +268,7 @@
 <script type="text/javascript" src="{{asset('user/home/js/jquery.mobile-menu.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('user/home/js/revolution-slider.js')}}"></script>
 <script type="text/javascript" src="{{asset('user/home/js/revolution.extension.js')}}"></script>
+<script type="text/javascript" src="{{asset('user/js/custom.js')}}"></script>
 @if(Route::current()->getName() === 'product.productinfo')
    <script type="text/javascript" src="{{asset('user/home/js/cloud-zoom.js')}}"></script>
 @endif
