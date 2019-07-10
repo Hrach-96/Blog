@@ -49,16 +49,52 @@
 										<label class="custom-file-label" for="main_image">Choose file</label>
 									</div>
 									@else
+										<label for="main_image" class="col-form-label">Main Image</label>
 										<img src="{{ asset("/images/main_images/".$product->main_image) }}" class="main_images">
 										<input type="file" name="main_image" class="custom-file-input hidden" id="main_image">
 									@endif
 								</div>
 							</div>
+							@if(empty($product->GalleryImages[0]))
+							<div class="form-group">
+								@if ($errors->has('main_image'))
+									<p role="alert" class='text-danger'><strong>{{ $errors->first('main_image') }}</strong></p>
+								@endif
+								<div class="input-group mb-3">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">Images For Gallery</span>
+										</div>
+										<div class="custom-file">
+											<input type="file" multiple class="custom-file-input" name="images_for_gallery[]" id="images_for_gallery">
+											<label class="custom-file-label" for="images_for_gallery">Choose files</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							@endif
 							<div class="form-group">
 								<button type="submit" class="btn btn-success mb-3">Update</button>
 							</div>
 						</form>
 					</div>
+					@if(!empty($product->GalleryImages[0]))
+					<div class="col-md-9 offset-1">
+						<h2 class="text-info">Gallery Image</h2>
+						<div class="row mt-2">
+							@foreach($product->GalleryImages as $gallery)
+								<div class="col-md-3">
+									<input type="file"  class="hidden product_gallery">
+									<img src="{{ asset('/images/product_gallery/'.$gallery->image) }}" class="GalleryImage" data-id="{{ Crypt::encrypt($gallery->id) }}">
+									<div class="float-right">
+										<i class="fa fa-upload text-info cursor_pointer GalleryUpdate" aria-hidden="true"></i>
+										<i class="fa fa-remove text-danger mr-1 ml-2 cursor_pointer GalleryRemove" aria-hidden="true"></i>
+									</div>
+								</div>
+							@endforeach
+						</div>
+					</div>
+					@endif
 				</div>
 			</div>
 		</div>

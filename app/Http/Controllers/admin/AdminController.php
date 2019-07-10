@@ -131,7 +131,6 @@ class AdminController extends Controller
                 $product->description = request('description');
             }
             if(request('main_image')){
-//                dd('images/main_images'.$product->main_image);
                 unlink('images/main_images/'.$product->main_image);
                 $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
             }
@@ -153,7 +152,7 @@ class AdminController extends Controller
         return Redirect('/admin/homepage');
     }
 
-
+    // delete product
     public function DeleteProduct($id){
         if ($product = Product::find($id)){
             $product->delete();
@@ -161,7 +160,35 @@ class AdminController extends Controller
         }else{
             toastr()->error('Something is wrong!');
         }
-        return Redirect('/admin/homepage');    }
+        return Redirect('/admin/homepage');
+    }
+
+    // update Gallery image
+    public function GalleryUpdate(Request $request){
+        if ( $id = Crypt::decrypt(request('id'))){
+            if ($Gallery = ProductImageGallery::find($id)){
+                $image_for_gallery = request('image_for_gallery');
+                unlink('images/product_gallery/'.$Gallery->image);
+                $new_image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                $Gallery->image = $new_image;
+                $Gallery->save();
+                return response(['success' => true,'image' => $new_image]);
+            }
+        }
+        return response(['success' => false]);
+    }
+
+    // delete Gallery image
+    public function GalleryRemove(Request $request){
+        if ( $id = Crypt::decrypt(request('id'))){
+            if ($Gallery = ProductImageGallery::find($id)){
+                $Gallery->delete();
+                return response(['success' => true]);
+            }
+        }
+        return response(['success' => false]);
+    }
+
 
 //    Check Admin
     public function checkLogin($email,$password){
