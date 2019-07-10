@@ -418,7 +418,7 @@
                                                             @endphp
                                                             <div class="item-inner">
                                                                 <div class="item-img">
-                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" title="Retis lapen casen" class="product-image"><img class="class_for_height_width_185px" src="{{asset('images/main_images/' . $newest_product->main_image)}}" alt="Retis lapen casen"></a>
+                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" title="Retis lapen casen" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $newest_product->main_image)}}" alt="Retis lapen casen"></a>
 
                                                                         <div class="actions">
                                                                             <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
@@ -454,11 +454,11 @@
                                                 </ul>
                                             </div>
                                             <div class="pdt-content all_products is-loaded  tab-content-actived">
-                                                <ul class="pdt-list products-grid zoomOut play">
+                                                <ul class="pdt-list products-grid zoomOut play more_content">
                                                     @php
                                                         $count_of_product = 0 ;
                                                     @endphp
-                                                    @foreach(App\Product::all() as $product)
+                                                    @foreach($products as $product)
                                                         @php
                                                             $count_of_product++;
                                                         @endphp
@@ -470,7 +470,7 @@
                                                             @endphp
                                                             <div class="item-inner">
                                                                 <div class="item-img">
-                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image"><img class="class_for_height_width_185px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}"></a>
+                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}"></a>
                                                                         <div class="actions">
                                                                             <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
                                                                             {{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}
@@ -503,8 +503,13 @@
                                                         </li>
                                                     @endforeach
 
-
                                                 </ul>
+                                                @if($products->lastPage() > 1)
+                                                    <?php $url = (request()->fullUrl() == url()->current())?'?':'&'; ?>
+                                                    <div class="jobofferpg-post-btn text-center">
+                                                        <a class="btn btn-theme SeeMore" data_url="{{ urlencode(request()->fullUrl().''.$url.'page='.(int)($products->currentPage()+1)) }}"  count="{{ $products->lastPage() }}">See More</a>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

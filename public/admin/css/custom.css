@@ -1,0 +1,25 @@
+.main_images{
+    cursor: pointer;
+    object-fit: contain;
+    width: 100%;
+}
+.GalleryImage{
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+}
+.hidden{
+    opacity: 0;
+}
+.cursor_pointer{
+    cursor: pointer;
+}
+.GalleryAdd{
+    min-height: 140px;
+}
+.GalleryAdd i{
+    transition: 1s;
+}
+.GalleryAdd:hover i{
+    color: lime !important;
+}

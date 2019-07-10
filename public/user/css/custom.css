@@ -1,8 +1,8 @@
 .class_for_height_width_255px{
     max-height:255px;
 }
-.class_for_height_width_185px{
-    max-height:185px;
+.class_for_height_width_150px{
+    max-height:150px;
 }
 .class_for_height_width_155px{
     max-height:155px;
@@ -22,4 +22,8 @@
     background-position: center;
     background-attachment: fixed;
     height:435px;
+}
+.img_class_for_logo{
+    max-height:140px;
+    max-width:140px;
 }

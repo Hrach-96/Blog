@@ -10,6 +10,7 @@ use Validator;
 use Redirect;
 use App\User;
 use Session;
+use Crypt;
 use Hash;
 
 class AdminController extends Controller
@@ -91,6 +92,124 @@ class AdminController extends Controller
         }
         return view('admin.product.AddProduct');
     }
+
+
+    // edit product
+    public function EditProduct($id){
+        if($product = Product::find($id)){
+            return view('admin.product.EditProduct',compact('product'));
+        }
+        toastr()->error('Something is wrong!');
+        return Redirect::back();
+    }
+
+    // update product
+    public function UpdateProduct(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
+
+        $id = Crypt::decrypt(request('id'));
+
+
+        if ($validator->fails() || !Product::find($id))
+        {
+            toastr()->error('Something is wrong!');
+            return Redirect::back()
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput();
+        }else{
+
+
+
+            $product = Product::find($id);
+            $product->name = request('name');
+            $product->price = request('price');
+            if(request('description')){
+                $product->description = request('description');
+            }
+            if(request('main_image')){
+                unlink('images/main_images/'.$product->main_image);
+                $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
+            }
+            if($product->save()){
+                if(request('images_for_gallery')){
+                    foreach (request('images_for_gallery') as $image_for_gallery){
+                        $ProductImageGallery = new ProductImageGallery();
+                        $ProductImageGallery->product_id = $product->id;
+                        $ProductImageGallery->image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                        $ProductImageGallery->save();
+                    }
+                }
+                toastr()->Success('Done');
+                return Redirect(route('admin.homepage'));
+            }else{
+                toastr()->error('Something is wrong!');
+            }
+        }
+        return Redirect('/admin/homepage');
+    }
+
+    // delete product
+    public function DeleteProduct($id){
+        if ($product = Product::find($id)){
+            $product->delete();
+            toastr()->Success('Done');
+        }else{
+            toastr()->error('Something is wrong!');
+        }
+        return Redirect('/admin/homepage');
+    }
+
+    // update Gallery image
+    public function GalleryUpdate(Request $request){
+        if ( $id = Crypt::decrypt(request('id'))){
+            if ($Gallery = ProductImageGallery::find($id)){
+                $image_for_gallery = request('image_for_gallery');
+                unlink('images/product_gallery/'.$Gallery->image);
+                $new_image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                $Gallery->image = $new_image;
+                $Gallery->save();
+                return response(['success' => true,'image' => $new_image]);
+            }
+        }
+        return response(['success' => false]);
+    }
+
+    // add gallery image
+    public function GalleryAdd(Request $request){
+        if ( $id = Crypt::decrypt(request('id'))) {
+            $new_images = [];
+            $new_images_id = [];
+            foreach (request('images_for_gallery') as $image_for_gallery) {
+                $ProductImageGallery = new ProductImageGallery();
+                $ProductImageGallery->product_id = $id;
+                $new_image = parent::fileUpload($image_for_gallery,'images/product_gallery');
+                $ProductImageGallery->image = $new_image;
+                $ProductImageGallery->save();
+
+                $new_images_id[] = Crypt::encrypt($ProductImageGallery->id);
+                $new_images[] = $new_image;
+            }
+                return response(['success' => true,'images' => $new_images,'ids' => $new_images_id]);
+        }
+        return response(['success' => false]);
+    }
+
+    // delete Gallery image
+    public function GalleryRemove(Request $request){
+        if ( $id = Crypt::decrypt(request('id'))){
+            if ($Gallery = ProductImageGallery::find($id)){
+                $Gallery->delete();
+                return response(['success' => true]);
+            }
+        }
+        return response(['success' => false]);
+    }
+
+
 //    Check Admin
     public function checkLogin($email,$password){
         $user = User::where(['email' => $email])->first();
