@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="col-sm-12 col-xs-12 footer-logo"><img alt="Datson" src="{{asset('user/home/images/logo.png')}}"></div>
+            <div class="col-sm-12 col-xs-12 footer-logo"><img class='img_class_for_logo' alt="Деловая Логистика" src="{{asset('images/logo/logo.png')}}"></div>
             <address>
                 <i class="fa fa-map-marker"></i>Москва<i class="fa fa-mobile"></i><span> +7(900) 699 - 99 -77</span> <i class="fa fa-envelope"></i><span> mail.ru</span>
             </address>

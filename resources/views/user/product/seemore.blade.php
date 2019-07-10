@@ -13,7 +13,7 @@
 		@endphp
 		<div class="item-inner">
 			<div class="item-img">
-				<div class="item-img-info"><a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image"><img class="class_for_height_width_185px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}"></a>
+				<div class="item-img-info"><a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}"></a>
 					<div class="actions">
 						<div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
 						{{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}

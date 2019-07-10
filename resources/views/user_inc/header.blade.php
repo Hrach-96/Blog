@@ -2,7 +2,7 @@
 <nav>
     <div class="container">
         <!-- Header Logo -->
-        <div class="logo"><a title="Datson" href="/"><img alt="Datson" src="{{asset('user/home/images/logo.png')}}"></a></div>
+        <div class="logo"><a title="Деловая Логистика" href="/"><img class='img_class_for_logo' alt="Деловая Логистика" src="{{asset('images/logo/logo.png')}}"></a></div>
         <!-- End Header Logo -->
 
         <div class="mm-toggle-wrap">
