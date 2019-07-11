@@ -3,7 +3,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Деловая Логистика">
+<meta name="keywords" content="цемент,песок,щебень,асфальт,цементовоз,арматура,фундамент,профильные трубы,карьерный песок,товары ">
 <meta name="author" content="">
 <meta name="token" content="{{ csrf_token() }}"/>
 <meta name="url" content="{{ URL('/') }}"/>

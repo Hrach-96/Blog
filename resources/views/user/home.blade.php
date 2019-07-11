@@ -10,7 +10,7 @@
                         <!-- SLIDE  -->
                         <li data-index="rs-16" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/slide-img1.jpg')}}"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Intro" data-description="">
                             <!-- MAIN IMAGE -->
-                            <img src="{{asset('user/home/images/slide-img1.jpg')}}" alt="">
+                            <img src="{{asset('user/home/images/slide-img1.jpg')}}" alt="Логистика">
                             <!-- LAYERS -->
 
                             <!-- LAYER NR. 1 -->
@@ -111,7 +111,7 @@
                         <!-- SLIDE  -->
                         <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/background_slide2.png')}}"  data-rotate="0"  data-saveperformance="off"  data-title="Ken Burns" data-description="">
                             <!-- MAIN IMAGE -->
-                            <img src="{{asset('user/home/images/background_slide2.png')}}"  alt="">
+                            <img src="{{asset('user/home/images/background_slide2.png')}}"  alt="Логистика">
                             <!-- LAYERS -->
 
                             <!-- LAYER NR. 1 -->
@@ -183,7 +183,7 @@
                         <!-- SLIDE  -->
                         {{--<li data-index="rs-19" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{asset('user/home/images/video-img.jpg')}}"  data-rotate="0"  data-saveperformance="off"  data-title="HTML5 Video" data-description="">--}}
                             {{--<!-- MAIN IMAGE -->--}}
-                            {{--<img src="{{asset('user/home/images/video-img.jpg')}}"  alt="">--}}
+                            {{--<img src="{{asset('user/home/images/video-img.jpg')}}"  alt="Логистика">--}}
                             {{--<!-- LAYERS -->--}}
 
                             {{--<!-- BACKGROUND VIDEO LAYER -->--}}
@@ -305,9 +305,9 @@
     <div class="promo-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img alt="promotion banner" src="{{asset('user/home/images/promo-banner1.jpg')}}"></div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img alt="promotion banner" src="{{asset('user/home/images/promo-banner2.jpg')}}"></div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img alt="promotion banner" src="{{asset('user/home/images/promo-banner3.jpg')}}"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img alt="песок" src="{{asset('user/home/images/promo-banner1.jpg')}}"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img alt="Цемент" src="{{asset('user/home/images/promo-banner2.jpg')}}"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img alt="товары" src="{{asset('user/home/images/promo-banner3.jpg')}}"></div>
             </div>
         </div>
     </div>
@@ -418,7 +418,7 @@
                                                             @endphp
                                                             <div class="item-inner">
                                                                 <div class="item-img">
-                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" title="Retis lapen casen" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $newest_product->main_image)}}" alt="Retis lapen casen"></a>
+                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" title="{{$newest_product->name}}" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $newest_product->main_image)}}" alt="{{$newest_product->name}}"></a>
 
                                                                         <div class="actions">
                                                                             <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
@@ -440,7 +440,7 @@
                                                                 </div>
                                                                 <div class="item-info">
                                                                     <div class="info-inner">
-                                                                        <div class="item-title"><a href="#" title="Retis lapen casen">{{$newest_product->name}}</a> </div>
+                                                                        <div class="item-title"><a href="#" title="{{$newest_product->name}}">{{$newest_product->name}}</a> </div>
                                                                         <div class="item-content">
                                                                             <div class="item-price">
                                                                                 <div class="price-box"><span class="regular-price"><span class="price"><span>&#8381;</span> {{$newest_product->price}}</span> </span> </div>

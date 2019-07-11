@@ -26,7 +26,7 @@
                                             <ul class="previews-list slides">
                                                 @foreach(App\ProductImageGallery::where('product_id' , $productInfo->id)->get() as $image)
                                                     <li>
-                                                        <a href='{{asset('images/product_gallery/' . $image->image)}}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{asset('images/product_gallery/' . $image->image)}}' "><img src="{{asset('images/product_gallery/' . $image->image)}}" alt = "T{{$productInfo->name}}"/></a>
+                                                        <a href='{{asset('images/product_gallery/' . $image->image)}}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{asset('images/product_gallery/' . $image->image)}}' "><img src="{{asset('images/product_gallery/' . $image->image)}}" alt = "{{$productInfo->name}}"/></a>
                                                     </li>
                                                 @endforeach
                                             </ul>
