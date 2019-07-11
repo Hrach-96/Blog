@@ -402,7 +402,7 @@
                                         <!--Begin Tab Content -->
                                         <div class="thm-pdt-content wide-5">
                                             <div class="pdt-content is-loaded last_products">
-                                                <ul class="pdt-list products-grid zoomOut play">
+                                                <ul class="pdt-list products-grid zoomOut play more_content_new_pr">
                                                     @php
                                                         $count_of_product = 0 ;
                                                     @endphp
@@ -452,6 +452,12 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
+                                                @if($newest_products->lastPage() > 1)
+                                                    <?php $url = (request()->fullUrl() == url()->current())?'?':'&'; ?>
+                                                    <div class="jobofferpg-post-btn text-center">
+                                                        <a class="btn btn-theme SeeMoreNew" data_url="{{ urlencode(request()->fullUrl().''.$url.'page='.(int)($newest_products->currentPage()+1)) }}"  count="{{ $newest_products->lastPage() }}">See More</a>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="pdt-content all_products is-loaded  tab-content-actived">
                                                 <ul class="pdt-list products-grid zoomOut play more_content">

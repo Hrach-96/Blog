@@ -18,4 +18,25 @@ $(document).ready(function () {
             }
         })
     })
+
+    $('.SeeMoreNew').click(function () {
+        var url = decodeURIComponent($(this).attr('data_url'));
+        var page = url.replace('#', '')
+        page = page.split("page=")[1];
+        var _this = this;
+        $.ajax({
+            type:'get',
+            url: url,
+            data:{new:true},
+            success: function(r){
+                $('.more_content_new_pr').append(r);
+                $('.more_content_new_pr>div').show('slow')
+                if ($(_this).attr('count') == page) {
+                    $(_this).remove()
+                }else{
+                    $(_this).attr('data_url',url.replace(page,Number(page)+1))
+                }
+            }
+        })
+    })
 })
