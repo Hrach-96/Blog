@@ -156,7 +156,7 @@
 
                                  data-elementdelay="0.05"
 
-                                 style="z-index: 6; white-space: nowrap;font-size:36px">Профессиональная установка</div>
+                                 style="z-index: 6; white-space: nowrap;font-size:36px">Профессиональная техника</div>
 
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
@@ -321,16 +321,21 @@
             </div>
             <div id="featured-slider" class="product-flexslider hidden-buttons">
                 <div class="slider-items slider-width-col4 products-grid">
-                    @foreach($newest_products as $newest_product)
-                        <!-- Item -->
+                    @foreach($random_products as $random_product)
                         <div class="item">
                             <div class="item-inner">
                                 <div class="item-img">
-                                    <div class="item-img-info"> <a class="product-image" href="{{route('product.productinfo',['id' => $newest_product->id])}}" title="{{$newest_product->name}}" href="#"> <img class="class_for_height_width_255px" alt="{{$newest_product->name}}" src="{{asset('images/main_images/' . $newest_product->main_image)}}"> </a>
+                                    <div class="item-img-info"> <a class="product-image" href="{{route('product.productinfo',['id' => $random_product->id])}}" title="{{$random_product->name}}" href="#">
+                                        @if($random_product->main_image)
+                                            <img class="class_for_height_width_255px" alt="{{$random_product->name}}" src="{{asset('images/main_images/' . $random_product->main_image)}}">
+                                        @else
+                                            <img class="class_for_height_width_255px" alt="{{$random_product->name}}" src="{{asset('images/main_images/default.jpg')}}">
+                                        @endif
+                                    </a>
                                         <div class="new-label new-top-left">new</div>
 
                                         <div class="actions">
-                                            <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
+                                            <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $random_product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
                                             {{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}
                                             {{--<div class="link-compare"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Compare"><span>Add to Compare</span></a></div>--}}
                                             {{--<div class="add_cart">--}}
@@ -349,12 +354,7 @@
                                 </div>
                                 <div class="item-info">
                                     <div class="info-inner">
-                                        <div class="item-title"> <a title="{{$newest_product->name}}" href="#"> {{$newest_product->name}} </a> </div>
-                                        <div class="item-content">
-                                            <div class="item-price">
-                                                <div class="price-box"> <span class="regular-price"> <span class="price"><span>&#8381;</span> {{$newest_product->price}}</span> </span> </div>
-                                            </div>
-                                        </div>
+                                        <div class="item-title"> <a title="{{$random_product->name}}" href="#"> {{$random_product->name}} </a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -394,129 +394,87 @@
                                         <!--Begin Tab Nav -->
                                         <div class="thm-pdt-nav">
                                             <ul class="pdt-nav">
-                                                <li class="item-nav" data-type="order" data-catid="" data-orderby="best_sales" data-href="last_products"><span class="title-navi">Последние товары</span></li>
-                                                <li class="item-nav tab-loaded tab-nav-actived" data-type="order" data-catid="" data-orderby="all_products" data-href="all_products"><span class="title-navi">Все товары</span></li>
+                                                @php
+                                                    $counttab = 0
+                                                @endphp
+                                                @foreach(App\ProductCategory::all() as $category)
+                                                    @if($counttab == 0)
+                                                        <li class="item-nav tab-loaded tab-nav-actived" data-type="order" data-catid="" data-orderby="best_sales" data-href="section_for_{{$category->id}}"><span class="title-navi">{{$category->name}}</span></li>
+                                                    @else
+                                                        <li class="item-nav" data-type="order" data-catid="" data-orderby="best_sales" data-href="section_for_{{$category->id}}"><span class="title-navi">{{$category->name}}</span></li>
+                                                    @endif
+                                                    @php
+                                                        $counttab++
+                                                    @endphp
+                                                @endforeach
                                             </ul>
                                         </div>
-                                        <!-- End Tab Nav -->
-                                        <!--Begin Tab Content -->
                                         <div class="thm-pdt-content wide-5">
-                                            <div class="pdt-content is-loaded last_products">
-                                                <ul class="pdt-list products-grid zoomOut play more_content_new_pr">
+                                            @php
+                                                $counttab = 0
+                                            @endphp
+                                            @foreach(App\ProductCategory::all() as $category)
+                                                    @if($counttab == 0)
+                                                        <div class="pdt-content is-loaded tab-content-actived section_for_{{$category->id}}">
+                                                    @else
+                                                        <div class="pdt-content is-loaded section_for_{{$category->id}}">
+                                                    @endif
                                                     @php
-                                                        $count_of_product = 0 ;
+                                                        $counttab++
                                                     @endphp
-                                                    @foreach($newest_products as $newest_product)
+                                                    <ul class="pdt-list products-grid zoomOut play more_content_new_pr">
                                                         @php
-                                                            $count_of_product++;
+                                                            $count_of_product = 0 ;
                                                         @endphp
-                                                        <li class="item item-animate {{($count_of_product == '1')? " wide-first" : ""}}">
+                                                        @foreach($category->GetProductsForCategory as $product)
                                                             @php
-                                                                if($count_of_product == 4){
-                                                                    $count_of_product = 0;
-                                                                }
+                                                                $count_of_product++;
                                                             @endphp
-                                                            <div class="item-inner">
-                                                                <div class="item-img">
-                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" title="{{$newest_product->name}}" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $newest_product->main_image)}}" alt="{{$newest_product->name}}"></a>
-
-                                                                        <div class="actions">
-                                                                            <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $newest_product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
-                                                                            {{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}
-                                                                            {{--<div class="link-compare"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Compare"><span>Add to Compare</span></a></div>--}}
-                                                                            {{--<div class="add_cart">--}}
-                                                                                {{--<button class="button btn-cart" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Add to Cart"><span>Add to Cart</span></button>--}}
-                                                                            {{--</div>--}}
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:80%"></div>
+                                                            <li class="item item-animate {{($count_of_product == '1')? " wide-first" : ""}}">
+                                                                @php
+                                                                    if($count_of_product == 4){
+                                                                        $count_of_product = 0;
+                                                                    }
+                                                                @endphp
+                                                                <div class="item-inner">
+                                                                    <div class="item-img">
+                                                                        <div class="item-img-info">
+                                                                            <a href="{{route('product.productinfo',['id' => $product->GetProductInfo->id])}}" title="{{$product->GetProductInfo->name}}" class="product-image">
+                                                                                @if($product->GetProductInfo->main_image)
+                                                                                    <img class="class_for_height_width_255px" alt="{{$product->GetProductInfo->name}}" src="{{asset('images/main_images/' . $product->GetProductInfo->main_image)}}">
+                                                                                @else
+                                                                                    <img class="class_for_height_width_255px" alt="{{$product->GetProductInfo->name}}" src="{{asset('images/main_images/default.jpg')}}">
+                                                                                @endif
+                                                                            </a>
+                                                                            <div class="actions">
+                                                                                <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $product->GetProductInfo->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
+                                                                                {{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}
+                                                                                {{--<div class="link-compare"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Compare"><span>Add to Compare</span></a></div>--}}
+                                                                                {{--<div class="add_cart">--}}
+                                                                                    {{--<button class="button btn-cart" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Add to Cart"><span>Add to Cart</span></button>--}}
+                                                                                {{--</div>--}}
+                                                                            </div>
+                                                                            <div class="rating">
+                                                                                <div class="ratings">
+                                                                                    <div class="rating-box">
+                                                                                        <div class="rating" style="width:100%"></div>
+                                                                                    </div>
+                                                                                    {{--<p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
                                                                                 </div>
-                                                                                {{--<p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="item-info">
-                                                                    <div class="info-inner">
-                                                                        <div class="item-title"><a href="#" title="{{$newest_product->name}}">{{$newest_product->name}}</a> </div>
-                                                                        <div class="item-content">
-                                                                            <div class="item-price">
-                                                                                <div class="price-box"><span class="regular-price"><span class="price"><span>&#8381;</span> {{$newest_product->price}}</span> </span> </div>
-                                                                            </div>
+                                                                    <div class="item-info">
+                                                                        <div class="info-inner">
+                                                                            <div class="item-title"><a href="#" title="{{$product->GetProductInfo->name}}">{{$product->GetProductInfo->name}}</a> </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                                @if($newest_products->lastPage() > 1)
-                                                    <?php $url = (request()->fullUrl() == url()->current())?'?':'&'; ?>
-                                                    <div class="jobofferpg-post-btn text-center">
-                                                        <a class="btn btn-theme SeeMoreNew" data_url="{{ urlencode(request()->fullUrl().''.$url.'page='.(int)($newest_products->currentPage()+1)) }}"  count="{{ $newest_products->lastPage() }}">See More</a>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="pdt-content all_products is-loaded  tab-content-actived">
-                                                <ul class="pdt-list products-grid zoomOut play more_content">
-                                                    @php
-                                                        $count_of_product = 0 ;
-                                                    @endphp
-                                                    @foreach($products as $product)
-                                                        @php
-                                                            $count_of_product++;
-                                                        @endphp
-                                                        <li class="item item-animate{{($count_of_product == '1')? " first" : ""}}{{($count_of_product == '4')? " last" : ""}}">
-                                                            @php
-                                                                if($count_of_product == 4){
-                                                                    $count_of_product = 0;
-                                                                }
-                                                            @endphp
-                                                            <div class="item-inner">
-                                                                <div class="item-img">
-                                                                    <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image"><img class="class_for_height_width_150px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}"></a>
-                                                                        <div class="actions">
-                                                                            <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
-                                                                            {{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}
-                                                                            {{--<div class="link-compare"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Compare"><span>Add to Compare</span></a></div>--}}
-                                                                            {{--<div class="add_cart">--}}
-                                                                                {{--<button class="button btn-cart" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Add to Cart"><span>Add to Cart</span></button>--}}
-                                                                            {{--</div>--}}
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:80%"></div>
-                                                                                </div>
-                                                                                {{--<p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-info">
-                                                                    <div class="info-inner">
-                                                                        <div class="item-title"><a href="#" title="{{$product->name}}">{{$product->name}}</a> </div>
-                                                                        <div class="item-content">
-                                                                            <div class="item-price">
-                                                                                <div class="price-box"><span class="regular-price"><span class="price"><span>&#8381;</span> {{$product->price}}</span> </span> </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    @endforeach
-
-                                                </ul>
-                                                @if($products->lastPage() > 1)
-                                                    <?php $url = (request()->fullUrl() == url()->current())?'?':'&'; ?>
-                                                    <div class="jobofferpg-post-btn text-center">
-                                                        <a class="btn btn-theme SeeMore" data_url="{{ urlencode(request()->fullUrl().''.$url.'page='.(int)($products->currentPage()+1)) }}"  count="{{ $products->lastPage() }}">See More</a>
-                                                    </div>
-                                                @endif
-                                            </div>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -539,9 +497,8 @@
             <div class="slider-items-products">
                 <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col6">
-
                         <!-- Item -->
-                        <div class="item"><a href="#"><img src="{{asset('user/home/images/b-logo3.png')}}" alt="Image"></a> </div>
+                        <div class="item"><a href="#"><img src="{{asset('user/home/images/partner_1.png')}}" style='height:100px' alt="Image"></a> </div>
                         <!-- End Item -->
 
                         <!-- Item -->

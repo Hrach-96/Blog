@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['IsLog
     Route::get('logout','AdminController@logout')->name('admin.logout');
     Route::get('homepage','AdminController@Homepage')->name('admin.homepage');
     Route::get('AddProduct','AdminController@AddProduct')->name('admin.AddProduct');
+    Route::get('AddCategory','AdminController@AddCategory')->name('admin.AddCategory');
+    Route::get('AddKg','AdminController@AddKg')->name('admin.AddKg');
     Route::get('AllProduct','AdminController@AllProduct')->name('admin.AllProduct');
     Route::get('EditProduct/{id}','AdminController@EditProduct')->name('admin.EditProduct');
     Route::get('DeleteProduct/{id}','AdminController@DeleteProduct')->name('admin.DeleteProduct');
@@ -35,7 +37,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['IsLog
     Route::post('GalleryUpdate','AdminController@GalleryUpdate')->name('admin.GalleryUpdate');
     Route::post('GalleryAdd','AdminController@GalleryAdd')->name('admin.GalleryAdd');
     Route::post('NewProduct','AdminController@NewProduct')->name('admin.NewProduct');
+    Route::post('NewKg','AdminController@NewKg')->name('admin.NewKg');
+    Route::post('NewCategory','AdminController@NewCategory')->name('admin.NewCategory');
     Route::post('UpdateProduct','AdminController@UpdateProduct')->name('admin.UpdateProduct');
+    Route::post('AddProductPrices','AdminController@AddProductPrices')->name('admin.AddProductPrices');
 });
 /*
 	End Admin Part
@@ -45,4 +50,5 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['IsLog
 */
 Route::group(['prefix' => 'product','namespace' => 'product'], function () {
     Route::get('productinfo','ProductController@productinfo')->name('product.productinfo');
+    Route::get('productfromcategory','ProductController@productfromcategory')->name('product.productfromcategory');
 });

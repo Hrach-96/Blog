@@ -16,13 +16,6 @@
                                 <input class="form-control" value="{{old('name')}}" type="text" name="name" id="name" placeholder="Product Name">
                             </div>
                             <div class="form-group">
-                                @if ($errors->has('price'))
-                                    <p role="alert" class='text-danger'><strong>{{ $errors->first('price') }}</strong></p>
-                                @endif
-                                <label for="price" class="col-form-label">Product Price</label>
-                                <input class="form-control" value="{{old('price')}}" type="number" name="price" id="price" placeholder="Product Price">
-                            </div>
-                            <div class="form-group">
                                 @if ($errors->has('description'))
                                     <p role="alert" class='text-danger'><strong>{{ $errors->first('description') }}</strong></p>
                                 @endif
@@ -53,6 +46,33 @@
                                         <label class="custom-file-label" for="images_for_gallery">Choose files</label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class='form-group'>
+                                <div class="card">
+                                    <div class="card-body">
+                                        @if ($errors->has('product_categorys'))
+                                            <p role="alert" class='text-danger'><strong>{{ $errors->first('product_categorys') }}</strong></p>
+                                        @endif
+                                        @foreach(App\ProductCategory::all() as $value)
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" name='product_categorys[]' value="{{$value->id}}" class="custom-control-input" id="checkbox_{{$value->id}}">
+                                                <label class="custom-control-label" for="checkbox_{{$value->id}}">{{$value->name}}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bulk" class="col-form-label">Product Bulk ( Объем )</label>
+                                <input class="form-control" value="{{old('bulk')}}" type="text" name="bulk" id="bulk" placeholder="Product bulk">
+                            </div>
+                            <div class="form-group">
+                                <label for="measurement" class="col-form-label">Product Unit of measurement ( Единица  измерения )</label>
+                                <input class="form-control" value="{{old('measurement')}}" type="text" name="measurement" id="measurement" placeholder="Product measurement">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity_1_pallet" class="col-form-label">Quantity on 1 pallet ( Количеств на 1 поддоне )</label>
+                                <input class="form-control" value="{{old('quantity_1_pallet')}}" type="text" name="quantity_1_pallet" id="quantity_1_pallet" placeholder="Product Quantity">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success mb-3">Add</button>

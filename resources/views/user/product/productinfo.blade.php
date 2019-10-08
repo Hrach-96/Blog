@@ -20,19 +20,25 @@
                                 <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
                                 <div class="product-img-box col-sm-6 col-xs-12">
                                     <div class="new-label new-top-left"> New </div>
-                                    <div class="product-image">
-                                        <div class="large-image"> <a href="{{asset('images/main_images/' . $productInfo->main_image)}}" class="cloud-zoom" id="zoom1"> <img src="{{asset('images/main_images/' . $productInfo->main_image)}}" alt="{{$productInfo->name}}"> </a> </div>
-                                        <div class="flexslider flexslider-thumb">
-                                            <ul class="previews-list slides">
-                                                @foreach(App\ProductImageGallery::where('product_id' , $productInfo->id)->get() as $image)
-                                                    <li>
-                                                        <a href='{{asset('images/product_gallery/' . $image->image)}}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{asset('images/product_gallery/' . $image->image)}}' "><img src="{{asset('images/product_gallery/' . $image->image)}}" alt = "{{$productInfo->name}}"/></a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
+                                    @if($productInfo->main_image)
+                                        <div class="product-image">
+                                            <div class="large-image">
+                                                <a href="{{asset('images/main_images/' . $productInfo->main_image)}}" class="cloud-zoom" id="zoom1">
+                                                        <img src="{{asset('images/main_images/' . $productInfo->main_image)}}" alt="{{$productInfo->name}}">
+                                                </a>
+                                            </div>
+                                            <div class="flexslider flexslider-thumb">
+                                                <ul class="previews-list slides">
+                                                    @foreach(App\ProductImageGallery::where('product_id' , $productInfo->id)->get() as $image)
+                                                        <li>
+                                                            <a href='{{asset('images/product_gallery/' . $image->image)}}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{asset('images/product_gallery/' . $image->image)}}' "><img src="{{asset('images/product_gallery/' . $image->image)}}" alt = "{{$productInfo->name}}"/></a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- end: more-images -->
+                                        <!-- end: more-images -->
+                                    @endif
                                 </div>
                                 <div class="product-shop col-sm-8 col-xs-12">
                                     <div class="product-name">
@@ -46,8 +52,31 @@
                                     {{--</div>--}}
                                     <div class="price-block">
                                         <div class="price-box">
-                                            <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> <span>&#8381;</span> {{$productInfo->price}}</span> </p>
-                                            {{--<p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>--}}
+                                            <h3>Цена</h3>
+                                            <table class='table table-striped'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>КГ</th>
+                                                        <th>Цвет</th>
+                                                        <th>Цена</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach(App\ProductKgPrice::where('product_id',$productInfo->id)->get() as $productKgPrice)
+                                                        <tr>
+                                                            <td>{{$productKgPrice->kg}}</td>
+                                                            <td>
+                                                                @if($productKgPrice->color)
+                                                                    {{$productKgPrice->color}}
+                                                                @else
+                                                                    -
+                                                                @endif
+                                                            </td>
+                                                            <td>{{$productKgPrice->price}} ₽</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
                                         <p class="availability in-stock pull-right"><span>В наличии</span></p>
                                     </div>
@@ -58,7 +87,7 @@
                             <div class="product-collateral col-lg-12 col-sm-12 col-xs-12 bounceInUp animated">
                                 <div class="add_info">
                                     <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
-                                        <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Description </a> </li>
+                                        <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> ОПИСАНИЕ ПРОДУКТА </a> </li>
                                     </ul>
                                     <div id="productTabContent" class="tab-content">
                                         <div class="tab-pane fade in active" id="product_tabs_description">
@@ -90,8 +119,14 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image"><img class="class_for_height_width_155px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}"></a>
-
+                                        <div class="item-img-info">
+                                            <a href="{{route('product.productinfo',['id' => $product->id])}}" title="{{$product->name}}" class="product-image">
+                                                @if($product->main_image)
+                                                    <img class="class_for_height_width_155px" src="{{asset('images/main_images/' . $product->main_image)}}" alt="{{$product->name}}">
+                                                @else
+                                                    <img class="class_for_height_width_155px" src="{{asset('images/main_images/default.jpg')}}" alt="{{$product->name}}">
+                                                @endif
+                                            </a>
                                             <div class="actions">
                                                 <div class="quick-view-btn"><a href="{{route('product.productinfo',['id' => $product->id])}}" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View"> <span>Quick View</span></a></div>
                                                 {{--<div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>--}}
@@ -103,7 +138,7 @@
                                             <div class="rating">
                                                 <div class="ratings">
                                                     <div class="rating-box">
-                                                        <div class="rating" style="width:80%"></div>
+                                                        <div class="rating" style="width:100%"></div>
                                                     </div>
                                                     <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
                                                 </div>
@@ -113,11 +148,6 @@
                                     <div class="item-info">
                                         <div class="info-inner">
                                             <div class="item-title"><a href="#" title="{{$product->name}}">{{$product->name}}</a> </div>
-                                            <div class="item-content">
-                                                <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"><span class="price"><span>&#8381;</span>{{$product->price}}</span> </span> </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +167,7 @@
                     <div class="slider-items slider-width-col6">
 
                         <!-- Item -->
-                        <div class="item"><a href="#"><img src="{{asset('user/home/images/b-logo3.png')}}" alt="Image"></a> </div>
+                        <div class="item"><a href="#"><img src="{{asset('user/home/images/partner_1.png')}}" style='height:100px' alt="Image"></a> </div>
                         <!-- End Item -->
 
                         <!-- Item -->

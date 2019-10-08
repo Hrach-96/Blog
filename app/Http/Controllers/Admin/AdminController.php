@@ -4,7 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\ProductFromCategory;
 use App\ProductImageGallery;
+use App\ProductCategory;
+use App\ProductKgPrice;
 use App\Product;
 use Validator;
 use Redirect;
@@ -54,12 +57,39 @@ class AdminController extends Controller
     {
         return view('admin.product.AddProduct');
     }
-    //Nwq Product
+    //Add Category
+    public function AddCategory()
+    {
+        return view('admin.product.AddCategory');
+    }
+    //New Category
+    public function NewCategory(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:product_categorys',
+        ]);
+        if ($validator->fails())
+        {
+            toastr()->error('Something is wrong!');
+            return Redirect::back()
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput();
+        }else{
+            $ProductCategory = new ProductCategory();
+            $ProductCategory->name = request('name');
+            if($ProductCategory->save()){
+                toastr()->Success('Done');
+                return Redirect(route('admin.AddCategory'));
+            }
+        }
+        return view('admin.product.AddCategory');
+    }
+    //New Product
     public function NewProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'price' => 'required|numeric',
+            'product_categorys' => 'required',
         ]);
         if ($validator->fails())
         {
@@ -70,9 +100,17 @@ class AdminController extends Controller
         }else{
             $product = new Product();
             $product->name = request('name');
-            $product->price = request('price');
             if(request('description')){
                 $product->description = request('description');
+            }
+            if(request('bulk')){
+                $product->bulk = request('bulk');
+            }
+            if(request('measurement')){
+                $product->measurement = request('measurement');
+            }
+            if(request('quantity_1_pallet')){
+                $product->quantity_1_pallet = request('quantity_1_pallet');
             }
             if(request('main_image')){
                 $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
@@ -84,6 +122,14 @@ class AdminController extends Controller
                         $ProductImageGallery->product_id = $product->id;
                         $ProductImageGallery->image = parent::fileUpload($image_for_gallery,'images/product_gallery');
                         $ProductImageGallery->save();
+                    }
+                }
+                if(request('product_categorys')){
+                    foreach (request('product_categorys') as $product_categorys){
+                        $ProductFromCategory = new ProductFromCategory();
+                        $ProductFromCategory->product_id = $product->id;
+                        $ProductFromCategory->category_id = $product_categorys;
+                        $ProductFromCategory->save();
                     }
                 }
                 toastr()->Success('Done');
@@ -103,16 +149,35 @@ class AdminController extends Controller
         return Redirect::back();
     }
 
+    // Add product Prices
+    public function AddProductPrices(Request $request){
+        $kgs = request('kgs');
+        $prices = request('prices');
+        $colors = request('colors');
+        $id = Crypt::decrypt(request('id'));
+        ProductKgPrice::where('product_id', $id)->delete();
+        for($i = 0 ; $i < count($kgs) ; $i ++){
+            if(isset($kgs[$i]) && isset($prices[$i])){
+                $ProductKgPrice = new ProductKgPrice();
+                $ProductKgPrice->product_id = $id;
+                $ProductKgPrice->kg = $kgs[$i];
+                $ProductKgPrice->price = $prices[$i];
+                $ProductKgPrice->color = $colors[$i];
+                $ProductKgPrice->save();
+            }
+        }
+        toastr()->Success('Done');
+        return Redirect(route('admin.homepage'));
+    }
     // update product
     public function UpdateProduct(Request $request){
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'price' => 'required|numeric',
+            'product_categorys' => 'required',
         ]);
 
         $id = Crypt::decrypt(request('id'));
-
 
         if ($validator->fails() || !Product::find($id))
         {
@@ -121,17 +186,24 @@ class AdminController extends Controller
                 ->withErrors($validator) // send back all errors to the login form
                 ->withInput();
         }else{
-
-
-
             $product = Product::find($id);
             $product->name = request('name');
-            $product->price = request('price');
             if(request('description')){
                 $product->description = request('description');
             }
+            if(request('bulk')){
+                $product->bulk = request('bulk');
+            }
+            if(request('measurement')){
+                $product->measurement = request('measurement');
+            }
+            if(request('quantity_1_pallet')){
+                $product->quantity_1_pallet = request('quantity_1_pallet');
+            }
             if(request('main_image')){
-                unlink('images/main_images/'.$product->main_image);
+                if($product->main_image){
+                    unlink('images/main_images/'.$product->main_image);
+                }
                 $product->main_image = parent::fileUpload(request('main_image'),'images/main_images');
             }
             if($product->save()){
@@ -141,6 +213,15 @@ class AdminController extends Controller
                         $ProductImageGallery->product_id = $product->id;
                         $ProductImageGallery->image = parent::fileUpload($image_for_gallery,'images/product_gallery');
                         $ProductImageGallery->save();
+                    }
+                }
+                ProductFromCategory::where('product_id', $id)->delete();
+                if(request('product_categorys')){
+                    foreach (request('product_categorys') as $product_categorys){
+                        $ProductFromCategory = new ProductFromCategory();
+                        $ProductFromCategory->product_id = $product->id;
+                        $ProductFromCategory->category_id = $product_categorys;
+                        $ProductFromCategory->save();
                     }
                 }
                 toastr()->Success('Done');

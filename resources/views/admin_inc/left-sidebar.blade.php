@@ -14,6 +14,7 @@
                         <ul class="collapse">
                             <li {{(Route::current()->getName() == "admin.homepage") ? "class=active" : ""}} ><a href="{{route('admin.homepage')}}">All Products</a></li>
                             <li {{(Route::current()->getName() == "admin.AddProduct") ? "class=active" : ""}}  ><a href="{{route('admin.AddProduct')}}">Add Product</a></li>
+                            <li {{(Route::current()->getName() == "admin.AddCategory") ? "class=active" : ""}}  ><a href="{{route('admin.AddCategory')}}">Add Category</a></li>
                         </ul>
                     </li>
                 </ul>

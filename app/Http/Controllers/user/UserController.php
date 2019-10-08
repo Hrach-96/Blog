@@ -10,15 +10,15 @@ class UserController extends Controller
 {
     //
     public function Home(Request $request){
-        $newest_products = Product::orderBy('id','DESC')->paginate(8);
+        $random_products = Product::orderByRaw("RAND()")->limit(12)->get();
         $products = Product::paginate(8);
         if ($request->ajax()) {
             if (!is_null(request('new'))){
-                return view('user.product.seemore_new_product', compact('newest_products'));
+                return view('user.product.seemore_new_product', compact('random_products'));
             }else{
                 return view('user.product.seemore', compact('products'));
             }
         }
-    	return view('user.home',compact('newest_products','products'));
+    	return view('user.home',compact('random_products','products'));
     }
 }

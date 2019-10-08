@@ -24,7 +24,7 @@
         <div class="container">
             <div class="col-sm-12 col-xs-12 footer-logo"><img class='img_class_for_logo' alt="Деловая Логистика" src="{{asset('images/logo/logo.png')}}"></div>
             <address>
-                <i class="fa fa-map-marker"></i>Москва<i class="fa fa-mobile"></i><span> +7(900) 699 - 99 -77</span> <i class="fa fa-envelope"></i><span> mail.ru</span>
+                <i class="fa fa-map-marker"></i>Москва<i class="fa fa-mobile"></i><span> </span> <i class="fa fa-envelope"></i><span> mail.ru</span>
             </address>
         </div>
     </div>
@@ -42,21 +42,9 @@
 <div id="mobile-menu">
     <ul>
         <li>
-            <div class="mm-search">
-                <form id="search_mob" name="search">
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-                        </div>
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
-                    </div>
-                </form>
-            </div>
+            <div class="home"><a href="/"><i class="icon-home"></i>Главная</a> </div>
         </li>
-        <li>
-            <div class="home"><a href="#"><i class="icon-home"></i>Home</a> </div>
-        </li>
-        <li><a href="#">Pages</a>
+        <li><a href="#">категории</a>
             <ul>
                 <li><a href="grid.html">Grid</a> </li>
                 <li> <a href="list.html">List</a> </li>
@@ -241,20 +229,6 @@
         <li><a href="#">Kids</a> </li>
         <li><a href="contact-us.html">Contact Us</a> </li>
     </ul>
-    <div class="dropdown block-language-wrapper">
-        <ul>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="{{asset('user/home/images/english.png')}}" alt="language"> English </a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="{{asset('user/home/images/francais.png')}}" alt="language"> French </a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="{{asset('user/home/images/german.png')}}" alt="language"> German </a></li>
-        </ul>
-    </div>
-    <div class="dropdown block-currency-wrapper">
-        <ul>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"> $ - Dollar </a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"> £ - Pound </a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"> € - Euro </a></li>
-        </ul>
-    </div>
 </div>
 
 <!-- End Footer -->

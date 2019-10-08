@@ -10,7 +10,6 @@
 							@csrf
 							<input type="hidden" value="{{ Crypt::encrypt($product->id) }}" name="id">
 							<div class="form-group">
-
 								<label for="name" class="col-form-label">ID</label>
 								<input class="form-control" value="{{ $product->id }}" type="number" disabled>
 							</div>
@@ -20,13 +19,6 @@
 								@endif
 								<label for="name" class="col-form-label">Product Name</label>
 								<input class="form-control" value="{{ old('name')?old('name'):$product->name }}" type="text" name="name" id="name" placeholder="Product Name">
-							</div>
-							<div class="form-group">
-								@if ($errors->has('price'))
-									<p role="alert" class='text-danger'><strong>{{ $errors->first('price') }}</strong></p>
-								@endif
-								<label for="price" class="col-form-label">Product Price</label>
-								<input class="form-control" value="{{old('price')?old('price'):$product->price}}" type="number" name="price" id="price" placeholder="Product Price">
 							</div>
 							<div class="form-group">
 								@if ($errors->has('description'))
@@ -73,6 +65,40 @@
 								</div>
 							</div>
 							@endif
+							<div class='form-group'>
+                                <div class="card">
+                                    <div class="card-body">
+                                        @if ($errors->has('product_categorys'))
+                                            <p role="alert" class='text-danger'><strong>{{ $errors->first('product_categorys') }}</strong></p>
+                                        @endif
+                                        @foreach(App\ProductCategory::all() as $value)
+                                        	@if(App\ProductFromCategory::where('product_id',$product->id)->where('category_id',$value->id)->first())
+                                        		<div class="custom-control custom-checkbox custom-control-inline">
+	                                                <input type="checkbox" checked name='product_categorys[]' value="{{$value->id}}" class="custom-control-input" id="checkbox_{{$value->id}}">
+	                                                <label class="custom-control-label" for="checkbox_{{$value->id}}">{{$value->name}}</label>
+	                                            </div>
+                                        	@else
+                                        		<div class="custom-control custom-checkbox custom-control-inline">
+	                                                <input type="checkbox" name='product_categorys[]' value="{{$value->id}}" class="custom-control-input" id="checkbox_{{$value->id}}">
+	                                                <label class="custom-control-label" for="checkbox_{{$value->id}}">{{$value->name}}</label>
+	                                            </div>
+                                        	@endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bulk" class="col-form-label">Product Bulk ( Объем )</label>
+                                <input class="form-control" type="text" name="bulk" id="bulk" value="{{$product->bulk}}" placeholder="Product bulk">
+                            </div>
+                            <div class="form-group">
+                                <label for="measurement" class="col-form-label">Product Unit of measurement ( Единица  измерения )</label>
+                                <input class="form-control" type="text" name="measurement" value="{{$product->measurement}}" id="measurement" placeholder="Product measurement">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity_1_pallet" class="col-form-label">Quantity on 1 pallet ( Количеств на 1 поддоне )</label>
+                                <input class="form-control" type="text" name="quantity_1_pallet" value="{{$product->quantity_1_pallet}}" id="quantity_1_pallet" placeholder="Product Quantity">
+                            </div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-success mb-3">Update</button>
 							</div>
@@ -99,6 +125,72 @@
 						</div>
 					</div>
 					@endif
+				</div>
+				<div class="card-body">
+					<h2 class="text-info text-center">Product Prices</h2>
+					<div class="col-md-8 offset-2">
+						<form  action="{{route('admin.AddProductPrices')}}" method="post">
+							<input type="hidden" value="{{ Crypt::encrypt($product->id) }}" name="id">
+							<div class='row mt-4'>
+                                @foreach(App\ProductKgPrice::all() as $value)
+                                	<div class='col-md-4 mt-3'>
+										<input type='text' class='form-control' value="{{$value->kg}}" name='kgs[]' placeholder='Kg'>
+									</div>
+									<div class='col-md-4 mt-3'>
+										<input type='text' class='form-control' value="{{$value->price}}" name='prices[]' placeholder='Price'>
+									</div>
+									<div class='col-md-4 mt-3'>
+										<input type='text' class='form-control' value="{{$value->color}}" name='colors[]' placeholder='Price'>
+									</div>
+								@endforeach
+							</div>
+							@csrf
+							<div class='row mt-4'>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='kgs[]' placeholder='Kg'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='prices[]' placeholder='Price'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='colors[]' placeholder='Colors'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='kgs[]' placeholder='Kg'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='prices[]' placeholder='Price'>
+								</div>
+
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='colors[]' placeholder='Colors'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='kgs[]' placeholder='Kg'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='prices[]' placeholder='Price'>
+								</div>
+
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='colors[]' placeholder='Colors'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='kgs[]' placeholder='Kg'>
+								</div>
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='prices[]' placeholder='Price'>
+								</div>
+
+								<div class='col-md-4 mt-3'>
+									<input type='text' class='form-control' name='colors[]' placeholder='Colors'>
+								</div>
+							</div>
+							<div class='form-group mt-5'>
+								<button class='btn btn-primary'>Save</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

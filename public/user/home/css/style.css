@@ -262,7 +262,7 @@ header {height:40px}
 
 .logo {
     position: absolute;
-    left: 50%;
+    left: 52%;
     margin:25px 0 0 -90px;
 	z-index:100
 	
@@ -1692,8 +1692,8 @@ ul.level1 {
 	padding: 6px 0;
 	border-top: none;
 	box-shadow: 0 10px 20px -5px;
-	width: 180px;
-	text-align: left;
+	width: 320px;
+	text-align: center;
 	z-index: 1000;
 }
 .nav > li.drop-menu ul li ul {
