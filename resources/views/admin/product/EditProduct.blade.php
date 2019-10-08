@@ -132,7 +132,7 @@
 						<form  action="{{route('admin.AddProductPrices')}}" method="post">
 							<input type="hidden" value="{{ Crypt::encrypt($product->id) }}" name="id">
 							<div class='row mt-4'>
-                                @foreach(App\ProductKgPrice::all() as $value)
+                                @foreach(App\ProductKgPrice::where('product_id',$product->id)->get() as $value)
                                 	<div class='col-md-4 mt-3'>
 										<input type='text' class='form-control' value="{{$value->kg}}" name='kgs[]' placeholder='Kg'>
 									</div>
