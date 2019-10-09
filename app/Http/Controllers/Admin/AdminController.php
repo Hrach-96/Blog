@@ -191,15 +191,9 @@ class AdminController extends Controller
             if(request('description')){
                 $product->description = request('description');
             }
-            if(request('bulk')){
-                $product->bulk = request('bulk');
-            }
-            if(request('measurement')){
-                $product->measurement = request('measurement');
-            }
-            if(request('quantity_1_pallet')){
-                $product->quantity_1_pallet = request('quantity_1_pallet');
-            }
+            $product->bulk = request('bulk');
+            $product->measurement = request('measurement');
+            $product->quantity_1_pallet = request('quantity_1_pallet');
             if(request('main_image')){
                 if($product->main_image){
                     unlink('images/main_images/'.$product->main_image);
@@ -307,7 +301,7 @@ class AdminController extends Controller
     }
 //    Admin Homepage
     public function Homepage(){
-        $AllProduct = Product::all();
+        $AllProduct = Product::orderBy('id', 'desc')->get();
         return view('admin.admin.homepage',compact(['AllProduct']));
     }
 }

@@ -58,6 +58,9 @@
                                                     <tr>
                                                         <th>КГ</th>
                                                         <th>Цвет</th>
+                                                        <th>Объем</th>
+                                                        <th>Единица измерения</th>
+                                                        <th>Количеств на 1 поддоне</th>
                                                         <th>Цена</th>
                                                     </tr>
                                                 </thead>
@@ -68,6 +71,27 @@
                                                             <td>
                                                                 @if($productKgPrice->color)
                                                                     {{$productKgPrice->color}}
+                                                                @else
+                                                                    -
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if($productKgPrice->GetProductAdditionalInfo->bulk)
+                                                                    {{$productKgPrice->GetProductAdditionalInfo->bulk}}
+                                                                @else
+                                                                    -
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if($productKgPrice->GetProductAdditionalInfo->measurement)
+                                                                    {{$productKgPrice->GetProductAdditionalInfo->measurement}}
+                                                                @else
+                                                                    -
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if($productKgPrice->GetProductAdditionalInfo->quantity_1_pallet)
+                                                                    {{$productKgPrice->GetProductAdditionalInfo->quantity_1_pallet}}
                                                                 @else
                                                                     -
                                                                 @endif
