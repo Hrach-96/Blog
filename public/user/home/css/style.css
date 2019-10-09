@@ -2365,12 +2365,9 @@ ul.level1 {
 .thm-producttabs .thm-pdt-container .thm-pdt-nav {
 	display: block;
 	text-align: left;
-	height: 55px;
-	
-
 }
 .thm-producttabs .thm-pdt-container .thm-pdt-nav .pdt-nav > li {
-	font-size: 20px;
+	font-size: 15px;
 	-webkit-transition: all 0.2s ease-out;
 	-moz-transition: all 0.2s ease-out;
 	-o-transition: all 0.2s ease-out;
@@ -2451,7 +2448,6 @@ ul.level1 {
 	padding: 0;
 	list-style: none;
 	text-align: center;
-	height: 45px;
 }
 .thm-producttabs .thm-pdt-container .pdt-nav > li {
 	float: left;
