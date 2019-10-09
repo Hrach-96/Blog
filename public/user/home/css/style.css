@@ -3691,13 +3691,10 @@ margin:
 	margin-bottom: 3px;
 	padding-top: 16px;
 	font-size: 14px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 .products-grid .item .item-inner .item-info .info-inner .item-title a {
 	text-decoration: none;
-	font-size: 10px;
+	font-size: 12px;
 	letter-spacing:1px;
 	font-weight:300
 	
